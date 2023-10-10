@@ -21,11 +21,16 @@ if(length(new.packages)) install.packages(new.packages)
 
 lapply(packages,require,character.only=T)
 
-path_script <- Sys.getenv("SCRIPT_LOCATION")
+
+path_script <- Sys.getenv("SCRIPT_LOCATION", here::here("scripts"))
+outputFolder <- Sys.getenv("OUTPUT_LOCATION", here::here("output"))
+
 source(file.path(path_script,"SHI/funGet_range_maps.R"), echo=TRUE)
 source(file.path(path_script,"SHI/funFilterCube_range.R"), echo=TRUE)
 
-input <- fromJSON(file=file.path(outputFolder, "input.json"))
+## Users should define their inputs. 
+## Really this script is just a proto-function, this is what package mechanism is for.
+input <- fromJSON(file="example-inputs/SHI/input.json")
 print("Inputs: ")
 print(input)
 
@@ -66,7 +71,7 @@ t_range <- ((t_n - t_0)/time_step)
 v_time_steps <- seq(t_0,t_n,time_step)
 
 #credentials
-token <- Sys.getenv("IUCN_TOKEN")
+token <- Sys.getenv("IUCN_TOKEN", "9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee")
 
 #Filter source for land cover, global or colombia
 # LC_source <- input$lc_source
@@ -138,6 +143,9 @@ if(!is.na(country_code)){
   print(sf_ext_srs)
 }
 })
+
+
+
 
 #1.4 Final range----------------------------------------------------------------
 #Create raster

@@ -1,0 +1,15 @@
+{
+  "species":  "Saguinus oedipus",
+  "srs":  "EPSG:3116",
+  "elev_buffer":  0,
+  "min_forest":  50,
+  "max_forest":  100,
+  "country_code":"COL",
+  "region":{},
+  "spat_res":  1000,
+  "expert_source": "IUCN",
+  "t_0": 2000,
+  "t_n": 2020,
+  "time_step": 1
+  }
+
