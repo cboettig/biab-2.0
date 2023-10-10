@@ -1,4 +1,4 @@
-## Base compose file. Automatically merged with compose.override.yml when running
+u# Base compose file. Automatically merged with compose.override.yml when running
 ##   docker compose up
 version: "3.7"
 
@@ -50,6 +50,9 @@ services:
       - GBIF_PWD=${GBIF_PWD}
       - GBIF_EMAIL=${GBIF_EMAIL}
       - IUCN_TOKEN=${IUCN_TOKEN}
+    security_opt:
+      - seccomp:unconfined
+
 
   runner-julia:
     container_name: biab-runner-julia
